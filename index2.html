@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!-- Task 1: Valid HTML5 document with the lang attribute -->
+<html lang="en">
+<head>
+    <!-- Task 1: Charset meta tag set to UTF-8 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Task 1: Meaningful title that includes the student's name -->
+    <title>INS205 Assessment - Elijah Bobby Lorenzo</title>
+    
+    <!-- Instructions: All styling must be written inside a style tag -->
+    <style>
+        /* Basic reset and font setup for a clean layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Light gray-blue background matching the image */
+            color: #333333;
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        /* Container matching the screenshot's card-like appearance */
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Task 1: Styled page heading using h1, centered, and visually distinct */
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Section styling */
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Task 2: Contact button styling */
+        #send-btn {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 10px;
+            border: none;
+            /* Note: Background color is handled dynamically by the JavaScript below */
+            background-color: #71c9f8; 
+        }
+
+        #send-btn:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Task 1: Centered Page Heading -->
+        <h1>My New Static Web Application</h1>
+        
+        <p>This new static page was built by Elijah Bobby Lorenzo for deployment.</p>
+
+        <!-- Task 2: Section 1 - Introducing yourself -->
+        <section>
+            <h2>About Me.</h2>
+            <p><strong>Full Name:</strong> Elijah Bobby Lorenzo</p>
+            <p><strong>Department:</strong> Computer Science</p>
+            <p><strong>Matriculation Number:</strong> UJ/2024/NS/0139</p>
+            <p><strong>Level:</strong> 200LVL</p>
+            <p>Outside of my core computer science coursework, I am highly passionate about mobile app development, specifically using Flutter and Dart to build cross-platform applications. I love designing utility apps that solve everyday problems for university students. When I am not debugging code, you can usually find me playing competitive chess, reading science fiction novels, or hiking on the weekends.</p>
+        </section>
+
+        <!-- Task 2: Section 2 - Describing what the page is about -->
+        <section>
+            <h2>About This Page.</h2>
+            <p>This application would be used for some courses like INS205.</p>
+        </section>
+
+        <!-- Task 2: Section 3 - Contact section with working mailto button -->
+        <section>
+            <h2>Contact</h2>
+            <p>For enquiries send me an email and I will get back to you ASAP ;).</p>
+            <!-- The button text must read "Send Email" and have the id="send-btn" for the script to target -->
+            <a href="mailto:2024ns0139@unijos.edu.ng" id="send-btn">Send Email</a>
+        </section>
+    </div>
+
+    <!-- Task 3: Provided Script Block -->
+    <script>
+        /* -------------------------------------------------------
+           Matric-number → button colour
+           Replace the matric value below with your own number.
+           ------------------------------------------------------- */
+        const matric = "UJ/2024/NS/0139"; // <-- CHANGE THIS TO YOUR MAT. NO.
+
+        /* CHANGE NOTHING BEYOND THIS POINT - CHANGE NOTHING BEYOND THIS POINT */ 
+
+        function hashString(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+            }
+            return hash;
+        }
+
+        // Normalise input
+        const normalised = matric.trim().toUpperCase();
+
+        // Map the hash to a hue value between 0 and 359 degrees
+        const hue = hashString(normalised) % 360;
+
+        // Build an HSL colour: fixed saturation & lightness, varying hue
+        const buttonColour = `hsl(${hue}, 65%, 45%)`;
+
+        // Apply the colour to the Send Email button
+        document.getElementById("send-btn").style.background = buttonColour;
+    </script>
+</body>
+</html>
